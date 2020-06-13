@@ -1,6 +1,6 @@
 [package]
-name = "sha-1"
-version = "0.1.0"
+name = "sha_1"
+version = "0.1.1"
 authors = ["Hamid R. K. Pishghadam <hamidrkp@riseup.net>"]
 edition = "2018"
 

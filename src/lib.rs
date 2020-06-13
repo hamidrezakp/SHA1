@@ -36,8 +36,6 @@ pub fn pad_message(message: &Vec<u8>) -> Result<Vec<Block>, &'static str> {
         paded_message.push(*byte);
     }
 
-    println!("Message len: {:?}", message.len() * 8);
-
     Ok(Block::from_message(&paded_message).unwrap())
 }
 
@@ -93,16 +91,6 @@ pub fn compute(blocks: Vec<Block>) -> Result<String, &'static str> {
             buf[2] = buf[1].rotate_left(30); // C = S^30(B)
             buf[1] = buf[0]; // B = A
             buf[0] = temp; // A = temp
-
-            println!(
-                "[i = {i}] A={a}, B={b}, C={c}, D={d}, E={e}",
-                i = t,
-                a = buf[0],
-                b = buf[1],
-                c = buf[2],
-                d = buf[3],
-                e = buf[4]
-            );
         }
 
         for i in 0..5 {
@@ -111,7 +99,7 @@ pub fn compute(blocks: Vec<Block>) -> Result<String, &'static str> {
     }
 
     Ok(format!(
-        "{:8x}{:8x}{:8x}{:8x}{:8x}",
+        "{:08x}{:08x}{:08x}{:08x}{:08x}",
         h[0], h[1], h[2], h[3], h[4]
     ))
 }
